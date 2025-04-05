@@ -11,6 +11,12 @@ case "${unameOut}" in
 esac
 
 echo $MACHINE
+GREEN='\033[0;32m'
+RESET='\033[0m'
+echo -e "${GREEN}\nAfter installation complete! Please perform the following actions to complete the configuration:\n"
+echo -e "echo \"autoload -Uz colors && colors\nsetopt PROMPT_SUBST\nPROMPT='%{\$fg[green]%}%n@%m %{\$fg[blue]%}%~%{\$reset_color%} '\n alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'\" >> ~/.zshrc"
+echo -e "add zsh-autosuggestions tzsh-syntax-highlighting into ~/.zshrc"
+echo -e "\n run 'source ~/.zshrc' to apply the changes.${RESET}\n"
 
 # Installs .oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -25,8 +31,6 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   fi
 fi
-
-echo -e "autoload -Uz colors && colors\nsetopt PROMPT_SUBST\nPROMPT='%{$fg[green]%}%n@%m %{$fg[blue]%}%~%{$reset_color%} '" >> ~/.zshrc
 
 # Assumes default ZSH installation
 ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
