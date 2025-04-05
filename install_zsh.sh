@@ -36,8 +36,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 # Fix permissions
 chmod 700 ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+plugins_to_add=("zsh-syntax-highlighting" "zsh-autosuggestions")
+plugin_string=$(IFS=' '; echo "${plugins_to_add[*]}")
+sed -i.bak "/^plugins=(/ s/)/ ${plugin_string})/" ~/.zshrc
+
 GREEN='\033[0;32m'
 RESET='\033[0m'
 echo -e "${GREEN}\nInstallation complete! \n"
 echo -e "autoload -Uz colors && colors\nsetopt PROMPT_SUBST\nPROMPT='%{\$fg[green]%}%n@%m %{\$fg[blue]%}%~%{\$reset_color%} '\nalias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> ~/.zshrc
-echo -e "alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> ~/.zshrc
