@@ -38,5 +38,6 @@ chmod 700 ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 GREEN='\033[0;32m'
 RESET='\033[0m'
-echo -e "${GREEN}\nInstallation complete! Please perform the following actions to complete the configuration:\n"
+echo -e "${GREEN}\nInstallation complete! \n"
 echo -e "autoload -Uz colors && colors\nsetopt PROMPT_SUBST\nPROMPT='%{\$fg[green]%}%n@%m %{\$fg[blue]%}%~%{\$reset_color%} '\nalias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> ~/.zshrc
+echo -e "alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> ~/.zshrc
